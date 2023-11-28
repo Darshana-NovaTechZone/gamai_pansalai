@@ -41,6 +41,8 @@ dependencies:
   carousel_slider: ^4.2.1
   youtube_player_flutter: ^8.1.2
   audioplayers:
+  flutter_onboard:
+  readmore: ^2.2.0
  
   
  

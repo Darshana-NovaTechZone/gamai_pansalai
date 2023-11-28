@@ -19,6 +19,7 @@ class _AudioPlayState extends State<AudioPlay> {
   bool isploading = false;
   Duration duration = Duration.zero;
   Duration Position = Duration.zero;
+  Duration newDuration = Duration();
   bool loop = false;
   void initState() {
     player.onPlayerStateChanged.listen((event) {
@@ -42,7 +43,7 @@ class _AudioPlayState extends State<AudioPlay> {
     player.onPositionChanged.listen((event) {
       setState(() {
         Position = event;
-        print(Position);
+        print('sssssssssssssssssaaaaaaaa$Position');
       });
     });
 
@@ -58,7 +59,8 @@ class _AudioPlayState extends State<AudioPlay> {
   }
 
   changeToSecond(int second) {
-    Duration newDuration = Duration();
+    Duration newDuration = Duration(seconds: second);
+
     setState(() {
       player.seek(newDuration);
     });
@@ -186,13 +188,15 @@ class _AudioPlayState extends State<AudioPlay> {
                   Slider(
                     value: Position.inSeconds.toDouble(),
                     max: duration.inSeconds.toDouble(),
+                    onChangeStart: (value) {},
                     activeColor: white,
                     inactiveColor: Colors.red,
                     min: 0.0,
                     onChanged: (value) {
-                      log(value.toString());
+                      print(value);
+                      changeToSecond(value.toInt());
+
                       setState(() {
-                        changeToSecond(value.toInt());
                         value = value;
                       });
                     },
@@ -210,7 +214,7 @@ class _AudioPlayState extends State<AudioPlay> {
                         children: [
                           TextButton(
                               onPressed: () {
-                                player.release();
+                                player.seek(Duration(seconds: 0));
                               },
                               child: Icon(
                                 Icons.restart_alt_outlined,
@@ -221,7 +225,7 @@ class _AudioPlayState extends State<AudioPlay> {
                             alignment: Alignment.bottomCenter,
                             child: IconButton(
                                 onPressed: () {
-                                  player.setPlaybackRate(0.5);
+                                  player.seek(Position - Duration(seconds: 1));
                                 },
                                 icon: Icon(
                                   Icons.fast_rewind,
@@ -267,7 +271,7 @@ class _AudioPlayState extends State<AudioPlay> {
                                   )),
                           TextButton(
                               onPressed: () {
-                                player.setPlaybackRate(1.5);
+                                player.seek(Position + Duration(seconds: 1));
                               },
                               child: Icon(
                                 Icons.fast_forward_rounded,

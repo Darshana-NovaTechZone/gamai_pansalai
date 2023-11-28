@@ -58,7 +58,7 @@ class _MainButtonState extends State<MainButton> {
           height: widget.buttonHeight,
           width: widget.width,
           decoration: BoxDecoration(
-            color: purple,
+            color: lightblue,
             borderRadius: BorderRadius.circular(15),
             // gradient: LinearGradient(colors: [appBlue, Color.fromARGB(31, 35, 38, 238)], begin: Alignment.topCenter, end: Alignment.bottomCenter),
           ),

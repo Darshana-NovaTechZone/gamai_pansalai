@@ -14,6 +14,9 @@ const Color lightblue = Color(0xff21c4af);
 Color nevColor = Color.fromARGB(250, 1, 22, 17);
 Color bacground = Color.fromARGB(248, 123, 218, 196);
 Color bacground2 = Color.fromARGB(248, 42, 72, 65);
+// Color bacground = Color(0xffe1e1e1);
+// Color bacground2 = Color(0xffe1e1e1);
+
 Color b2 = Colors.black12;
 String fontEnglish = 'PlusJakartaSans';
 String fontSinhala = 'NotoSansSinhala';

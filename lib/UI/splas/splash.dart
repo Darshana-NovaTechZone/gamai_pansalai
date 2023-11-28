@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../db/sqldb.dart';
 import '../../provider/all_provider.dart';
+import '../onbording/intro.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -22,7 +23,7 @@ class _SplashState extends State<Splash> {
     Future.delayed(Duration(seconds: 3)).then((value) => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => Login(),
+          builder: (context) => IntroScreen(),
         )));
     // TODO: implement initState
     super.initState();

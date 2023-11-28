@@ -2,10 +2,13 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:gamai_pansalai/UI/home/Custom_drawer.dart';
+import 'package:gamai_pansalai/UI/home/temple/temple_details.dart';
+import 'package:gamai_pansalai/UI/home/upcoing_events/upcoming_events.dart';
 import 'package:gamai_pansalai/provider/all_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../color/color.dart';
+import 'wath_piliweth/wath_piliweth.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -65,15 +68,6 @@ class _HomeState extends State<Home> {
                 // [Color.fromARGB(248, 123, 218, 196), Color.fromARGB(248, 42, 72, 65)
               ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
               child: Stack(children: [
-                // SizedBox(
-                //     height: h,
-                //     width: w,
-                //     child: Image.asset(
-                //       'assets/m.jpg',
-                //       color: white.withOpacity(0.8),
-                //       colorBlendMode: BlendMode.colorDodge,
-                //       fit: BoxFit.cover,
-                //     )),
                 Container(
                   height: h,
                   width: w,
@@ -84,9 +78,9 @@ class _HomeState extends State<Home> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        height: MediaQuery.of(context).padding.top + 12,
-                      ),
+                      // SizedBox(
+                      //   height: MediaQuery.of(context).padding.top + 12,
+                      // ),
                       CarouselSlider.builder(
                         key: key1,
                         itemBuilder: (context, index, realIndex) {
@@ -100,31 +94,6 @@ class _HomeState extends State<Home> {
                                     width: w + 10,
                                     height: h / 3,
                                   )),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.black.withOpacity(0.4),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                height: h / 3,
-                                width: w,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 30),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'බණ දේශණා',
-                                        style: TextStyle(fontSize: 32.dp, color: white1, fontWeight: FontWeight.bold, fontFamily: 'fontSinhala'),
-                                      ),
-                                      Text(
-                                        'සිත ගැන දැනගන්න මේ බණ \nදේශණාව අහන්න ',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(fontSize: 14.dp, color: white2, fontWeight: FontWeight.bold, fontFamily: 'fontSinhala'),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
                             ],
                           );
                         },
@@ -135,7 +104,7 @@ class _HomeState extends State<Home> {
                             aspectRatio: 2.0,
                             autoPlay: true,
                             disableCenter: true,
-                            viewportFraction: 0.94,
+                            viewportFraction: 1,
                             enlargeCenterPage: true,
                             onPageChanged: (index, reason) {
                               setState(() {
@@ -189,25 +158,34 @@ class _HomeState extends State<Home> {
                       CarouselSlider.builder(
                         key: key2,
                         itemBuilder: (context, index, realIndex) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.circular(5),
-                                child: Image.asset(
-                                  temple[index],
-                                  fit: BoxFit.cover,
-                                  width: w,
-                                )),
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => TempleDetails(img: temple[index]),
+                                  ));
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(5),
+                                  child: Image.asset(
+                                    temple[index],
+                                    fit: BoxFit.cover,
+                                    width: w,
+                                  )),
+                            ),
                           );
                         },
                         itemCount: temple.length,
                         options: CarouselOptions(
                             height: h / 5,
                             padEnds: true,
-                            aspectRatio: 2.0,
+                            aspectRatio: 1.0,
                             autoPlay: true,
                             disableCenter: true,
-                            viewportFraction: 0.5,
+                            viewportFraction: 0.4,
                             enlargeCenterPage: false,
                             onPageChanged: (index, reason) {}),
                       ),
@@ -294,13 +272,22 @@ class _HomeState extends State<Home> {
                           ),
                           itemBuilder: (context, index) => Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child: Image.asset(
-                                      book[index],
-                                      fit: BoxFit.cover,
-                                      width: w + 10,
-                                    )),
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => UpcomingEvent(img: book[index]),
+                                        ));
+                                  },
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image.asset(
+                                        book[index],
+                                        fit: BoxFit.cover,
+                                        width: w + 10,
+                                      )),
+                                ),
                               )),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -335,13 +322,22 @@ class _HomeState extends State<Home> {
                         itemBuilder: (context, index, realIndex) {
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.circular(5),
-                                child: Image.asset(
-                                  temple[index],
-                                  fit: BoxFit.cover,
-                                  width: w,
-                                )),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => WathPiliweth(img: book[index]),
+                                    ));
+                              },
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(5),
+                                  child: Image.asset(
+                                    temple[index],
+                                    fit: BoxFit.cover,
+                                    width: w,
+                                  )),
+                            ),
                           );
                         },
                         itemCount: temple.length,
@@ -361,7 +357,7 @@ class _HomeState extends State<Home> {
               ]),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 40, left: 15),
+              padding: const EdgeInsets.only(top: 25, left: 15),
               child: CircleAvatar(
                 backgroundColor: value.pwhite1,
                 child: IconButton(
