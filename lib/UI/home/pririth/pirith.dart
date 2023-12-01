@@ -4,9 +4,9 @@ import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:gamai_pansalai/main.dart';
 import 'package:gamai_pansalai/provider/all_provider.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../color/color.dart';
-import '../Custom_drawer.dart';
+import '../menu/Custom_drawer.dart';
 import 'audio_player.dart';
 import 'details_pirith.dart';
 
@@ -54,7 +54,7 @@ class _PirithState extends State<Pirith> {
             surfaceTintColor: Color.fromARGB(255, 2, 12, 20),
             backgroundColor: Colors.transparent,
             title: Text(
-              'පිරිත්',
+              AppLocalizations.of(context)!.n1,
               style: TextStyle(fontSize: 18.dp, color: value.pwhite, fontWeight: FontWeight.bold, fontFamily: 'fontSinhala'),
             ),
             bottom: _search

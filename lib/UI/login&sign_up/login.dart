@@ -7,6 +7,7 @@ import 'package:gamai_pansalai/color/color.dart';
 
 import '../../widget/mainButton.dart';
 import '../navigation/navigation.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -58,12 +59,13 @@ class Login extends StatelessWidget {
                                   flex: 5,
                                 ),
                                 Text(
-                                  'Sign in',
+                                  AppLocalizations.of(context)!.l1,
                                   style: TextStyle(fontSize: 32.dp, color: white1, fontWeight: FontWeight.bold, fontFamily: 'Inter'),
                                 ),
                                 Spacer(),
                                 Text(
-                                  'Please login to continue using our app',
+                                  AppLocalizations.of(context)!.l2,
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(fontSize: 14.dp, color: white2, fontWeight: FontWeight.bold, fontFamily: 'Inter'),
                                 ),
                                 SizedBox(
@@ -84,7 +86,7 @@ class Login extends StatelessWidget {
                                     ),
                                     filled: true,
                                     hintStyle: TextStyle(fontSize: 13.dp),
-                                    hintText: 'Email',
+                                    hintText: AppLocalizations.of(context)!.l3,
                                     fillColor: white2,
                                   ),
                                 ),
@@ -107,7 +109,7 @@ class Login extends StatelessWidget {
                                     ),
                                     filled: true,
                                     hintStyle: TextStyle(fontSize: 13.dp),
-                                    hintText: 'Password',
+                                    hintText: AppLocalizations.of(context)!.l4,
                                     fillColor: white2,
                                   ),
                                 ),
@@ -116,7 +118,7 @@ class Login extends StatelessWidget {
                                   child: TextButton(
                                     onPressed: () {},
                                     child: Text(
-                                      'Forget password',
+                                      AppLocalizations.of(context)!.l5,
                                       style: TextStyle(fontSize: 12.dp, color: white2, fontWeight: FontWeight.bold, fontFamily: 'Inter'),
                                     ),
                                   ),
@@ -130,13 +132,13 @@ class Login extends StatelessWidget {
                                   onTap: () {
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => NavigationScreen()));
                                   },
-                                  text: 'Sign In',
+                                  text: AppLocalizations.of(context)!.l6,
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "Don't have an account ?",
+                                      AppLocalizations.of(context)!.l7,
                                       style: TextStyle(fontSize: 13.dp, color: white2, fontWeight: FontWeight.bold, fontFamily: 'Inter'),
                                     ),
                                     TextButton(
@@ -148,7 +150,7 @@ class Login extends StatelessWidget {
                                             ));
                                       },
                                       child: Text(
-                                        'Sign Up',
+                                        AppLocalizations.of(context)!.l7,
                                         style: TextStyle(fontSize: 13.dp, color: lightblue, fontWeight: FontWeight.bold, fontFamily: 'Inter'),
                                       ),
                                     ),
@@ -162,7 +164,7 @@ class Login extends StatelessWidget {
                     ),
                     Spacer(),
                     Text(
-                      "Or connect with",
+                      AppLocalizations.of(context)!.l8,
                       style: TextStyle(fontSize: 13.dp, color: white3, fontWeight: FontWeight.bold, fontFamily: 'Inter'),
                     ),
                     Spacer(),
@@ -194,7 +196,7 @@ class Login extends StatelessWidget {
               child: TextButton(
                 onPressed: () {},
                 child: Text(
-                  'Skip',
+                  AppLocalizations.of(context)!.l9,
                   style: TextStyle(fontSize: 14.dp, color: white2, fontWeight: FontWeight.bold, fontFamily: 'Inter'),
                 ),
               ),

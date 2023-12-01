@@ -1,12 +1,18 @@
+import 'dart:io';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:gamai_pansalai/provider/all_provider.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../color/color.dart';
 import '../../../widget/mainButton.dart';
-import '../Custom_drawer.dart';
+import '../menu/Custom_drawer.dart';
 
 // import 'package:image_picker/image_picker.dart';
 
@@ -19,6 +25,10 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   bool tap = false;
+  String newImage = '';
+  bool selectImg = false;
+  int localDataId = 0;
+  final ImagePicker _picker = ImagePicker();
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   @override
   Widget build(BuildContext context) {
@@ -76,7 +86,7 @@ class _ProfileState extends State<Profile> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'My Profile',
+                                    AppLocalizations.of(context)!.p,
                                     style: TextStyle(fontSize: 32.dp, color: white, fontWeight: FontWeight.bold, fontFamily: 'fontEnglish'),
                                   ),
                                 ],
@@ -101,7 +111,9 @@ class _ProfileState extends State<Profile> {
                             right: 12,
                             bottom: 12,
                             child: TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                imageSelect(context);
+                              },
                               child: CircleAvatar(
                                 radius: 25,
                                 child: Padding(
@@ -130,7 +142,7 @@ class _ProfileState extends State<Profile> {
                             Row(
                               children: [
                                 Text(
-                                  'Name',
+                                  AppLocalizations.of(context)!.p1,
                                   style: TextStyle(fontSize: 12.dp, fontWeight: FontWeight.bold, fontFamily: 'fontEnglish'),
                                 ),
                                 Spacer(),
@@ -149,7 +161,7 @@ class _ProfileState extends State<Profile> {
                             Row(
                               children: [
                                 Text(
-                                  'Mobile Number',
+                                  AppLocalizations.of(context)!.p2,
                                   style: TextStyle(fontSize: 12.dp, fontWeight: FontWeight.bold, fontFamily: 'fontEnglish'),
                                 ),
                                 Spacer(),
@@ -168,7 +180,7 @@ class _ProfileState extends State<Profile> {
                             Row(
                               children: [
                                 Text(
-                                  'Gender',
+                                  AppLocalizations.of(context)!.p3,
                                   style: TextStyle(fontSize: 12.dp, fontWeight: FontWeight.bold, fontFamily: 'fontEnglish'),
                                 ),
                                 Spacer(),
@@ -187,7 +199,7 @@ class _ProfileState extends State<Profile> {
                             Row(
                               children: [
                                 Text(
-                                  'Birthday',
+                                  AppLocalizations.of(context)!.p4,
                                   style: TextStyle(fontSize: 12.dp, fontWeight: FontWeight.bold, fontFamily: 'fontEnglish'),
                                 ),
                                 Spacer(),
@@ -205,7 +217,7 @@ class _ProfileState extends State<Profile> {
                               buttonHeight: h / 13,
                               width: w,
                               onTap: () {},
-                              text: 'Update',
+                              text: AppLocalizations.of(context)!.p5,
                             ),
                             Spacer(),
                           ],
@@ -218,5 +230,133 @@ class _ProfileState extends State<Profile> {
             ],
           )),
     );
+  }
+
+  Future getImage() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    Directory appDocDir = await getApplicationDocumentsDirectory();
+    String appDocPath = appDocDir.path;
+    var img = File(image!.path);
+
+    final fileName = basename(image.path);
+    final File localImage = await img.copy('${appDocPath}/$fileName');
+    print(localImage);
+    setState(() {
+      newImage = image.path;
+    });
+  }
+
+  Future getImageFromCamera() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+    Directory appDocDir = await getApplicationDocumentsDirectory();
+    String appDocPath = appDocDir.path;
+    var img = File(image!.path);
+
+    final fileName = basename(image.path);
+    final File localImage = await img.copy('${appDocPath}/$fileName');
+    print(localImage);
+    setState(() {
+      newImage = image.path;
+    });
+  }
+
+  imageSelect(BuildContext con) {
+    showModalBottomSheet(
+        context: con,
+        builder: (context) {
+          var h = MediaQuery.of(context).size.height;
+          var w = MediaQuery.of(context).size.width;
+          return StatefulBuilder(builder: (context, setState) {
+            return ClipRRect(
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 10),
+                child: Container(
+                  padding: EdgeInsets.all(8),
+                  color: Colors.white.withOpacity(0.6),
+                  width: w,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                          alignment: Alignment.centerRight,
+                          child: IconButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              icon: Icon(Icons.close))),
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Select image',
+                          style: TextStyle(
+                            color: black,
+                            fontSize: 18.dp,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Inter",
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      Divider(
+                        height: 0,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          getImage();
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          padding: EdgeInsets.only(left: 12),
+                          alignment: Alignment.centerLeft,
+                          height: h / 15,
+                          width: w,
+                          child: Text(
+                            'From gallery',
+                            style: TextStyle(
+                              color: black,
+                              fontSize: 18.dp,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: "Inter",
+                            ),
+                          ),
+                        ),
+                      ),
+                      Divider(
+                        height: 0,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          getImageFromCamera();
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          padding: EdgeInsets.only(left: 12),
+                          alignment: Alignment.centerLeft,
+                          height: h / 15,
+                          child: Text(
+                            'From Camera',
+                            style: TextStyle(
+                              color: black,
+                              fontSize: 18.dp,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: "Inter",
+                            ),
+                          ),
+                        ),
+                      ),
+                      Divider(
+                        height: 0,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          });
+        });
   }
 }

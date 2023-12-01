@@ -1,0 +1,65 @@
+{
+    "language": "Continue",
+    "l": "Continue",
+    "l1": "Sign in",
+    "l2": "Please login to continue using our app", 
+    "l3": "Email", 
+    "l4": "Password",
+     "l5": "Forget password", 
+     "l7": "Don't have an account ?",
+     "l6": "Sign Up", 
+     "l8": "Or connect with",
+     "l9": "Skip",
+     "l10": "Please fill the details and create account", 
+     "l11": "Full name",
+     "l12": "By signing up you accept the ", 
+     "l13": "Terms of service ",
+     "l14": "and ",
+     "l15": "Privacy policy",
+     "l16": "Sign In", 
+     "l17": "Already have an account ?",
+     "l18": "Log in",
+     "l19": "Or connect with",
+
+     "n":"Home",
+     "n1":"Pirith",
+     "n2":"Bana",
+     "n3":"Notification",
+     "n4":"Profile",
+
+     "h":"Temple",
+     "h1":"Buddhism Books",
+     "h2":"Upcoming daham programs",
+     "h3":"Buddhism practices",
+
+     "tp":"Details",
+     "tp1":"Gallery",
+     "tp2":"History",
+     "tp3":"Monk",
+     "tp4":"Location",
+
+     "tp5":"Show more",
+     "tp6":"Show less",
+
+     "p":"My Profile",
+     "p1":"Name",
+     "p2":"Mobile Number",
+     "p3":"Gender",
+     "p4":"Birthday",
+     "p5":"Update"
+
+
+    
+ 
+
+
+ 
+   
+    
+  
+  
+
+
+
+
+}  

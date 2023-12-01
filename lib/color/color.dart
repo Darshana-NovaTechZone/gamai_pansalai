@@ -18,6 +18,10 @@ Color bacground2 = Color.fromARGB(248, 42, 72, 65);
 // Color bacground2 = Color(0xffe1e1e1);
 
 Color b2 = Colors.black12;
+
+
+
+
 String fontEnglish = 'PlusJakartaSans';
 String fontSinhala = 'NotoSansSinhala';
 

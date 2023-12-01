@@ -10,13 +10,13 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
 
-import '../../color/color.dart';
 import '../../provider/all_provider.dart';
 import '../home/bana/bana.dart';
 import '../home/home.dart';
 import '../home/notification/notification.dart';
 import '../home/pririth/pirith.dart';
 import '../home/profile/profile.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NavigationScreen extends StatefulWidget {
   const NavigationScreen({super.key});
@@ -87,30 +87,19 @@ class _NavigationScreenState extends State<NavigationScreen> {
                 type: BottomNavigationBarType.fixed,
                 currentIndex: _selectedIndex,
                 items: <BottomNavigationBarItem>[
+                  BottomNavigationBarItem(icon: Icon(Icons.home), label: AppLocalizations.of(context)!.n),
+                  BottomNavigationBarItem(icon: Icon(Icons.copy_rounded), label: AppLocalizations.of(context)!.n1),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
-                    label: 'Home',
-                  ),
+                      icon: Icon(
+                        Icons.menu_book,
+                      ),
+                      label: AppLocalizations.of(context)!.n2),
+                  BottomNavigationBarItem(icon: Icon(Icons.notifications), label: AppLocalizations.of(context)!.n3),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.copy_rounded),
-                    label: 'pirith',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.menu_book,
-                    ),
-                    label: 'bana',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.notifications),
-                    label: 'Notification',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.person,
-                    ),
-                    label: 'Profile',
-                  ),
+                      icon: Icon(
+                        Icons.person,
+                      ),
+                      label: AppLocalizations.of(context)!.n4),
                 ],
               ),
             ),

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:gamai_pansalai/provider/all_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../color/color.dart';
-import '../../db/sqldb.dart';
+import '../../../color/color.dart';
+import '../../../controller/language_change_controller.dart';
+import '../../../db/sqldb.dart';
 
 class customDrawer extends StatefulWidget {
   const customDrawer({super.key});
@@ -16,13 +18,29 @@ class customDrawer extends StatefulWidget {
 class _customDrawerState extends State<customDrawer> {
   bool tap = false;
   bool lite = false;
+  bool en = false;
   SqlDb sqlDb = SqlDb();
   List modeData = [];
   @override
   void initState() {
     data();
+    local();
     // TODO: implement initState
     super.initState();
+  }
+
+  local() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    var code = sp!.getString('lCode');
+    String lCode = code.toString();
+
+    setState(() {
+      if (lCode == 'en') {
+        en = true;
+      } else {
+        en = false;
+      }
+    });
   }
 
   data() async {
@@ -206,6 +224,63 @@ class _customDrawerState extends State<customDrawer> {
                         ),
                         InkWell(
                           borderRadius: BorderRadius.circular(10),
+                          onTap: () {},
+                          child: Card(
+                            color: white.withOpacity(0.1),
+                            child: Padding(
+                              padding: EdgeInsets.all(8),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        Icons.language,
+                                        color: value.pwhite,
+                                      ),
+                                      SizedBox(
+                                        width: w / 15,
+                                      ),
+                                      Text(
+                                        'Language',
+                                        style: TextStyle(fontSize: 12.dp, color: value.pwhite, fontWeight: FontWeight.bold, fontFamily: 'sinhala'),
+                                      ),
+                                      Spacer(),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            en ? 'සිංහල' : 'English',
+                                            style:
+                                                TextStyle(fontSize: 12.dp, color: value.pwhite, fontWeight: FontWeight.bold, fontFamily: 'sinhala'),
+                                          ),
+                                          Consumer<LangugageChangeController>(
+                                            builder: (context, lan, child) {
+                                              return Switch(
+                                                value: en,
+                                                onChanged: (value) async {
+                                                  setState(() {
+                                                    en = value;
+                                                    if (en == true) {
+                                                      lan.changeLanguage(Locale('en'));
+                                                    } else {
+                                                      lan.changeLanguage(Locale('si'));
+                                                    }
+                                                  });
+                                                },
+                                              );
+                                            },
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          borderRadius: BorderRadius.circular(10),
                           focusColor: value.pwhite,
                           onTap: () {
                             // Navigator.push(
@@ -229,7 +304,7 @@ class _customDrawerState extends State<customDrawer> {
                                     width: w / 15,
                                   ),
                                   Text(
-                                    'Home',
+                                    'Share',
                                     style: TextStyle(fontSize: 12.dp, color: value.pwhite, fontWeight: FontWeight.bold, fontFamily: 'sinhala'),
                                   ),
                                 ],
@@ -261,7 +336,7 @@ class _customDrawerState extends State<customDrawer> {
                                     width: w / 15,
                                   ),
                                   Text(
-                                    'Home',
+                                    'Review',
                                     style: TextStyle(fontSize: 12.dp, color: value.pwhite, fontWeight: FontWeight.bold, fontFamily: 'sinhala'),
                                   ),
                                 ],
@@ -287,7 +362,7 @@ class _customDrawerState extends State<customDrawer> {
                                     width: w / 15,
                                   ),
                                   Text(
-                                    'Home',
+                                    'About',
                                     style: TextStyle(fontSize: 12.dp, color: value.pwhite, fontWeight: FontWeight.bold, fontFamily: 'sinhala'),
                                   ),
                                 ],
@@ -313,7 +388,7 @@ class _customDrawerState extends State<customDrawer> {
                                     width: w / 15,
                                   ),
                                   Text(
-                                    'Home',
+                                    'Contact Us',
                                     style: TextStyle(fontSize: 12.dp, color: value.pwhite, fontWeight: FontWeight.bold, fontFamily: 'sinhala'),
                                   ),
                                 ],

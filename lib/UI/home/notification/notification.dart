@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:gamai_pansalai/main.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:gamai_pansalai/provider/all_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../color/color.dart';
-import '../Custom_drawer.dart';
+import '../menu/Custom_drawer.dart';
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});
@@ -52,7 +52,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
             surfaceTintColor: Color.fromARGB(255, 2, 12, 20),
             backgroundColor: Colors.transparent,
             title: Text(
-              'දැනුම්දීම්',
+              AppLocalizations.of(context)!.n3,
               style: TextStyle(fontSize: 18.dp, color: value.pwhite, fontWeight: FontWeight.bold, fontFamily: 'fontSinhala'),
             ),
             bottom: _search

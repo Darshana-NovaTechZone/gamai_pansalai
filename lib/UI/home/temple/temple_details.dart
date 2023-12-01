@@ -6,6 +6,7 @@ import 'package:readmore/readmore.dart';
 import '../../../color/color.dart';
 import '../../../provider/all_provider.dart';
 import '../../../widget/decaration.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TempleDetails extends StatefulWidget {
   const TempleDetails({super.key, required this.img});
@@ -140,7 +141,7 @@ class _TempleDetailsState extends State<TempleDetails> {
                         height: 25,
                       ),
                       Text(
-                        'Details',
+                        AppLocalizations.of(context)!.tp,
                         style: TextStyle(fontSize: 18.dp, color: value.pwhite1, fontWeight: FontWeight.bold, fontFamily: 'fontSinhala'),
                       ),
                       SizedBox(
@@ -152,15 +153,15 @@ class _TempleDetailsState extends State<TempleDetails> {
                         style: TextStyle(fontSize: 12.dp, color: value.pwhite2, fontWeight: FontWeight.bold, fontFamily: 'fontSinhala'),
                         colorClickableText: Colors.pink,
                         trimMode: TrimMode.Line,
-                        trimCollapsedText: 'Show more',
-                        trimExpandedText: 'Show less',
+                        trimCollapsedText: AppLocalizations.of(context)!.tp5,
+                        trimExpandedText: AppLocalizations.of(context)!.tp6,
                         moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: lightblue),
                       ),
                       SizedBox(
                         height: 25,
                       ),
                       Text(
-                        'Gallery',
+                        AppLocalizations.of(context)!.tp1,
                         style: TextStyle(fontSize: 18.dp, color: value.pwhite1, fontWeight: FontWeight.bold, fontFamily: 'fontSinhala'),
                       ),
                       SizedBox(
@@ -187,7 +188,7 @@ class _TempleDetailsState extends State<TempleDetails> {
                         height: 25,
                       ),
                       Text(
-                        'History',
+                        AppLocalizations.of(context)!.tp2,
                         style: TextStyle(fontSize: 18.dp, color: value.pwhite1, fontWeight: FontWeight.bold, fontFamily: 'fontSinhala'),
                       ),
                       SizedBox(
@@ -207,7 +208,7 @@ class _TempleDetailsState extends State<TempleDetails> {
                         height: 25,
                       ),
                       Text(
-                        'Monk',
+                        AppLocalizations.of(context)!.tp3,
                         style: TextStyle(fontSize: 18.dp, color: value.pwhite1, fontWeight: FontWeight.bold, fontFamily: 'fontSinhala'),
                       ),
                       SizedBox(
@@ -234,7 +235,7 @@ class _TempleDetailsState extends State<TempleDetails> {
                         height: 25,
                       ),
                       Text(
-                        'Location',
+                        AppLocalizations.of(context)!.tp4,
                         style: TextStyle(fontSize: 18.dp, color: value.pwhite1, fontWeight: FontWeight.bold, fontFamily: 'fontSinhala'),
                       ),
                       SizedBox(

@@ -3,9 +3,12 @@ import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:gamai_pansalai/UI/login&sign_up/login.dart';
 import 'package:gamai_pansalai/color/color.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../controller/language_change_controller.dart';
 import '../../db/sqldb.dart';
 import '../../provider/all_provider.dart';
+import '../language/language.dart';
 import '../onbording/intro.dart';
 
 class Splash extends StatefulWidget {
@@ -23,13 +26,23 @@ class _SplashState extends State<Splash> {
     Future.delayed(Duration(seconds: 3)).then((value) => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => IntroScreen(),
+          builder: (context) => Language(),
         )));
     // TODO: implement initState
     super.initState();
   }
 
+  local() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    var code = sp!.getString('lCode');
+    String lCode = code.toString();
+    print('gggggggg');
+    Provider.of<LangugageChangeController>(context, listen: false).changeLanguage(Locale(lCode));
+    print('gggggggbbbbbbbg');
+  }
+
   localData() async {
+    await local();
     List modeData = await SqlDb().readData('select * from mode');
     if (modeData.isNotEmpty) {
       if (modeData[0]['status'] == 1) {

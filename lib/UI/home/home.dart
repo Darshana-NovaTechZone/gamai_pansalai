@@ -1,12 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:gamai_pansalai/UI/home/Custom_drawer.dart';
+import 'package:gamai_pansalai/UI/home/menu/Custom_drawer.dart';
 import 'package:gamai_pansalai/UI/home/temple/temple_details.dart';
 import 'package:gamai_pansalai/UI/home/upcoing_events/upcoming_events.dart';
 import 'package:gamai_pansalai/provider/all_provider.dart';
 import 'package:provider/provider.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../color/color.dart';
 import 'wath_piliweth/wath_piliweth.dart';
 
@@ -130,27 +130,13 @@ class _HomeState extends State<Home> {
                         }).toList(),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        padding: const EdgeInsets.all(12),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'පන්සල්',
+                              AppLocalizations.of(context)!.h,
                               style: TextStyle(fontSize: 18.dp, color: value.pwhite1, fontWeight: FontWeight.bold, fontFamily: 'fontSinhala'),
-                            ),
-                            TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                'see more',
-                                style: TextStyle(
-                                  fontSize: 15.dp,
-                                  color: value.pwhite2,
-                                  fontWeight: FontWeight.normal,
-                                  fontFamily: 'fontSinhala',
-                                  decoration: TextDecoration.underline,
-                                  decorationColor: value.pwhite2,
-                                ),
-                              ),
                             ),
                           ],
                         ),
@@ -190,27 +176,13 @@ class _HomeState extends State<Home> {
                             onPageChanged: (index, reason) {}),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        padding: const EdgeInsets.all(12),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'ධර්ම දේශනා ග්‍රන්ථ',
+                              AppLocalizations.of(context)!.h1,
                               style: TextStyle(fontSize: 17.dp, color: value.pwhite1, fontWeight: FontWeight.bold, fontFamily: 'fontSinhala'),
-                            ),
-                            TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                'see more',
-                                style: TextStyle(
-                                  fontSize: 15.dp,
-                                  color: value.pwhite2,
-                                  fontWeight: FontWeight.normal,
-                                  fontFamily: 'fontSinhala',
-                                  decoration: TextDecoration.underline,
-                                  decorationColor: value.pwhite2,
-                                ),
-                              ),
                             ),
                           ],
                         ),
@@ -235,28 +207,14 @@ class _HomeState extends State<Home> {
                                 ),
                               )),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        padding: const EdgeInsets.all(12),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
                               child: Text(
-                                'ඉදිරියට එන දහම් වැඩසටහන්',
+                                AppLocalizations.of(context)!.h2,
                                 style: TextStyle(fontSize: 17.dp, color: value.pwhite1, fontWeight: FontWeight.bold, fontFamily: 'fontSinhala'),
-                              ),
-                            ),
-                            TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                'see more',
-                                style: TextStyle(
-                                  fontSize: 15.dp,
-                                  color: value.pwhite2,
-                                  fontWeight: FontWeight.normal,
-                                  fontFamily: 'fontSinhala',
-                                  decoration: TextDecoration.underline,
-                                  decorationColor: value.pwhite2,
-                                ),
                               ),
                             ),
                           ],
@@ -290,28 +248,14 @@ class _HomeState extends State<Home> {
                                 ),
                               )),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        padding: const EdgeInsets.all(12),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
                               child: Text(
-                                'වත් පිලිවෙත්',
+                                AppLocalizations.of(context)!.h3,
                                 style: TextStyle(fontSize: 17.dp, color: value.pwhite1, fontWeight: FontWeight.bold, fontFamily: 'fontSinhala'),
-                              ),
-                            ),
-                            TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                'see more',
-                                style: TextStyle(
-                                  fontSize: 15.dp,
-                                  color: value.pwhite2,
-                                  fontWeight: FontWeight.normal,
-                                  fontFamily: 'fontSinhala',
-                                  decoration: TextDecoration.underline,
-                                  decorationColor: value.pwhite2,
-                                ),
                               ),
                             ),
                           ],

@@ -5,7 +5,8 @@ import 'package:provider/provider.dart';
 
 import '../../../color/color.dart';
 import '../../../provider/all_provider.dart';
-import '../Custom_drawer.dart';
+import '../menu/Custom_drawer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Bana extends StatefulWidget {
   const Bana({super.key});
@@ -48,10 +49,10 @@ class _BanaState extends State<Bana> {
                     color: value.pwhite,
                   )),
             ],
-            scrolledUnderElevation: 800,
+            scrolledUnderElevation: 8,
             surfaceTintColor: Color.fromARGB(255, 2, 12, 20),
             title: Text(
-              'බණ',
+              AppLocalizations.of(context)!.n2,
               style: TextStyle(fontSize: 18.dp, color: value.pwhite, fontWeight: FontWeight.bold, fontFamily: 'fontSinhala'),
             ),
             bottom: _search
