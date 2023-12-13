@@ -50,6 +50,12 @@ dependencies:
   path: ^1.8.3
   image_picker: ^1.0.4
   path_provider: ^2.1.1
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/m.png"
  
   
  
